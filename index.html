@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝐼𝑇𝑆𝐴𝑌𝑂𝑈𝐵 | Video Editor Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Cover Section -->
+    <div class="cover-section">
+        <div class="cover-overlay"></div>
+        <div class="cover-pattern"></div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-container">
+        <div class="profile-pic-wrapper">
+            <img src="https://via.placeholder.com/200/FCBF0B/1a1a1a?text=Profile" alt="Profile Picture" id="profileImage" class="profile-pic">
+            <div class="profile-upload-btn" onclick="document.getElementById('profileInput').click()">
+                <i class="fas fa-camera"></i>
+                <span>تغيير الصورة</span>
+            </div>
+            <input type="file" id="profileInput" accept="image/*" style="display: none;">
+        </div>
+        
+        <div class="profile-info">
+            <h1 class="profile-name">𝐼𝑇𝑆𝐴𝑌𝑂𝑈𝐵</h1>
+            <p class="profile-title"><i class="fas fa-video"></i> Video Editor</p>
+            <div class="edit-mode-toggle">
+                <button id="editModeBtn" class="edit-btn">
+                    <i class="fas fa-edit"></i> تعديل المعلومات
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
+        <section class="about-section card">
+            <div class="section-header">
+                <h2><i class="fas fa-user-circle"></i> نبذة عني</h2>
+                <button class="edit-section-btn" onclick="toggleEditAbout()">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+            <div id="aboutDisplay" class="about-display">
+                <p>مرحباً! أنا مصمم فيديوهات محترف متخصص في إنشاء محتوى مرئي إبداعي وجذاب. أقدم خدمات المونتاج، تصميم الموشن جرافيك، والتأثيرات البصرية الاحترافية.</p>
+            </div>
+            <textarea id="aboutTextarea" class="about-textarea hidden" rows="6" placeholder="اكتب نبذة عنك هنا...">مرحباً! أنا مصمم فيديوهات محترف متخصص في إنشاء محتوى مرئي إبداعي وجذاب. أقدم خدمات المونتاج، تصميم الموشن جرافيك، والتأثيرات البصرية الاحترافية.</textarea>
+            <div id="aboutEditControls" class="edit-controls hidden">
+                <button onclick="saveAbout()" class="save-btn"><i class="fas fa-check"></i> حفظ</button>
+                <button onclick="cancelEditAbout()" class="cancel-btn"><i class="fas fa-times"></i> إلغاء</button>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section card">
+            <div class="section-header">
+                <h2><i class="fas fa-address-book"></i> معلومات التواصل</h2>
+                <button class="edit-section-btn" onclick="toggleEditContact()">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+            
+            <div id="contactDisplay" class="contact-display">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span id="phoneDisplay">+966 XX XXX XXXX</span>
+                </div>
+                <div class="social-links">
+                    <a href="#" id="whatsappLink" target="_blank" class="social-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>واتساب</span>
+                    </a>
+                    <a href="#" id="facebookLink" target="_blank" class="social-btn facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>فيسبوك</span>
+                    </a>
+                    <a href="#" id="instagramLink" target="_blank" class="social-btn instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>انستغرام</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="contactEdit" class="contact-edit hidden">
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> رقم الهاتف:</label>
+                    <input type="tel" id="phoneInput" placeholder="+966 XX XXX XXXX">
+                </div>
+                <div class="form-group">
+                    <label><i class="fab fa-whatsapp"></i> رابط واتساب:</label>
+                    <input type="url" id="whatsappInput" placeholder="https://wa.me/966XXXXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label><i class="fab fa-facebook"></i> رابط فيسبوك:</label>
+                    <input type="url" id="facebookInput" placeholder="https://facebook.com/username">
+                </div>
+                <div class="form-group">
+                    <label><i class="fab fa-instagram"></i> رابط انستغرام:</label>
+                    <input type="url" id="instagramInput" placeholder="https://instagram.com/username">
+                </div>
+                <div class="edit-controls">
+                    <button onclick="saveContact()" class="save-btn"><i class="fas fa-check"></i> حفظ</button>
+                    <button onclick="cancelEditContact()" class="cancel-btn"><i class="fas fa-times"></i> إلغاء</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio-section">
+            <div class="section-header">
+                <h2><i class="fas fa-film"></i> معرض الأعمال</h2>
+                <button class="add-work-btn" onclick="openAddWorkModal()">
+                    <i class="fas fa-plus"></i> إضافة عمل جديد
+                </button>
+            </div>
+            
+            <div id="portfolioGrid" class="portfolio-grid">
+                <!-- Sample Work Items -->
+                <div class="work-item" data-id="1">
+                    <div class="work-thumbnail">
+                        <img src="https://via.placeholder.com/400x225/1a1a1a/FCBF0B?text=Video+Project+1" alt="Project 1">
+                        <div class="work-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="delete-work-btn" onclick="deleteWork(1)"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>مشروع إعلاني</h3>
+                        <p>فيديو إعلاني احترافي للترويج للمنتجات</p>
+                    </div>
+                </div>
+
+                <div class="work-item" data-id="2">
+                    <div class="work-thumbnail">
+                        <img src="https://via.placeholder.com/400x225/1a1a1a/FCBF0B?text=Video+Project+2" alt="Project 2">
+                        <div class="work-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="delete-work-btn" onclick="deleteWork(2)"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>موشن جرافيك</h3>
+                        <p>تصميم موشن جرافيك متحرك ومبتكر</p>
+                    </div>
+                </div>
+
+                <div class="work-item" data-id="3">
+                    <div class="work-thumbnail">
+                        <img src="https://via.placeholder.com/400x225/1a1a1a/FCBF0B?text=Video+Project+3" alt="Project 3">
+                        <div class="work-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="delete-work-btn" onclick="deleteWork(3)"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>مونتاج إبداعي</h3>
+                        <p>مونتاج احترافي مع تأثيرات بصرية مذهلة</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Add Work Modal -->
+    <div id="addWorkModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-plus-circle"></i> إضافة عمل جديد</h2>
+                <button class="close-modal" onclick="closeAddWorkModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="addWorkForm" class="add-work-form">
+                <div class="form-group">
+                    <label>عنوان العمل:</label>
+                    <input type="text" id="workTitle" required placeholder="مثال: مشروع إعلاني">
+                </div>
+                <div class="form-group">
+                    <label>وصف العمل:</label>
+                    <textarea id="workDescription" rows="3" required placeholder="وصف مختصر للعمل"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>رابط الفيديو (يوتيوب، فيميو، أو رابط مباشر):</label>
+                    <input type="url" id="workVideoUrl" placeholder="https://youtube.com/watch?v=...">
+                </div>
+                <div class="form-group">
+                    <label>صورة مصغرة (اختياري):</label>
+                    <input type="file" id="workThumbnail" accept="image/*">
+                    <small>أو سيتم استخدام صورة افتراضية</small>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="save-btn">
+                        <i class="fas fa-check"></i> إضافة العمل
+                    </button>
+                    <button type="button" onclick="closeAddWorkModal()" class="cancel-btn">
+                        <i class="fas fa-times"></i> إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 𝐼𝑇𝑆𝐴𝑌𝑂𝑈𝐵 | Video Editor Portfolio - All Rights Reserved</p>
+        <p class="footer-tagline">Creating Visual Stories ✨</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
